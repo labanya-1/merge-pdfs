@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PDF Tools — Merge & Convert to Word</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>PDF Tools</h1>
+    <p class="tagline">Merge PDFs or convert a PDF into a Word document.</p>
+  </header>
+
+  <main>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="merge" role="tab">Merge PDFs</button>
+      <button class="tab" data-tab="convert" role="tab">PDF → Word</button>
+    </nav>
+
+    <section id="merge" class="panel active">
+      <form id="mergeForm">
+        <label class="dropzone" for="mergeInput">
+          <strong>Drop PDFs here</strong>
+          <span>or click to choose files (2 or more)</span>
+          <input id="mergeInput" type="file" name="files" accept="application/pdf" multiple hidden />
+        </label>
+        <ul id="mergeList" class="file-list"></ul>
+        <button type="submit" class="primary" disabled>Merge PDFs</button>
+        <p class="status" id="mergeStatus"></p>
+      </form>
+    </section>
+
+    <section id="convert" class="panel">
+      <form id="convertForm">
+        <label class="dropzone" for="convertInput">
+          <strong>Drop a PDF here</strong>
+          <span>or click to choose a file</span>
+          <input id="convertInput" type="file" name="file" accept="application/pdf" hidden />
+        </label>
+        <ul id="convertList" class="file-list"></ul>
+        <button type="submit" class="primary" disabled>Convert to Word</button>
+        <p class="status" id="convertStatus"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <small>Files are processed on the server and deleted right after download. Max 50 MB per upload.</small>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
